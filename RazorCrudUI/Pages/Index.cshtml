@@ -1,0 +1,51 @@
+﻿@page
+@model RazorCrudUI.Pages.IndexModel
+
+@{
+    ViewData["Title"] = "Mail Order stuff -Home page";
+}
+<div class="row">
+    <form>
+         <input type="text" asp-for="SearchString" />
+        <input type="submit" value="Search" />
+    </form>
+    </div>
+<div class="row">
+        @foreach (var item in Model.ItemList)
+        {
+            <div class="col-3">
+                    <div class="card">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-8 h5">
+                                @Html.DisplayFor(modelItem => @item.Name)
+                </div>
+                <div class="col-4 text-end">
+                                @Html.DisplayFor(modelItem => item.Price)
+                </div>
+            </div>
+            </div>
+
+        <div class="card-body">
+                        @if (string.IsNullOrEmpty(item.pictureUrl))
+                        {
+            <img src="~/Images/MLB.jpg" class="card-img" />
+                        }
+                        else
+                        {
+            <img src="~/@item.pictureUrl" class="card-img" />
+                        }
+    </div>
+
+        <div class="card-body">
+                        @Html.DisplayFor(modelItem => @item.Description)
+        </div>
+
+        <div class="card-body">
+            <a asp-page="MainDetails" asp-route-id="@item.Id"
+                class="btn btn-primary">View Details</a>
+        </div>
+    </div>
+                </div>
+        }
+</div>
