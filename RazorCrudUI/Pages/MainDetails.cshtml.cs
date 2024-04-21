@@ -1,5 +1,6 @@
 using Data;
 using Domain.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using RazorCrudUI.Pages.Items;
@@ -8,6 +9,7 @@ using RazorCrudUI.Pages.Items;
 
 namespace UI.Pages
 {
+    [Authorize]
     public class MainDetailsModel : PageModel
     {
         private readonly IItemRepository _repository;
